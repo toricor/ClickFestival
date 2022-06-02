@@ -1,4 +1,5 @@
-package com.github.toricor.clickfestival.clickfestival
+package com.github.toricor.clickfestival
+
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
