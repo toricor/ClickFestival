@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/TopFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.github.toricor.clickfestival.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/TopFragment"
+        android:name="com.github.toricor.clickfestival.top.TopFragment"
+        android:label="@string/top_fragment_label"
+        tools:layout="@layout/fragment_top">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_TopFragment_to_GameFragment"
+            app:destination="@id/GameFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.github.toricor.clickfestival.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/GameFragment"
+        android:name="com.github.toricor.clickfestival.game.GameFragment"
+        android:label="@string/game_fragment_label"
+        tools:layout="@layout/fragment_game">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_GameFragment_to_TopFragment"
+            app:destination="@id/TopFragment" />
     </fragment>
 </navigation>
