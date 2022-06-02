@@ -34,7 +34,9 @@ class TopFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonStart.setOnClickListener {
-            findNavController().navigate(R.id.action_TopFragment_to_GameFragment)
+            if (findNavController().currentDestination?.id == R.id.TopFragment) {
+                findNavController().navigate(R.id.action_TopFragment_to_GameFragment)
+            }
         }
     }
 

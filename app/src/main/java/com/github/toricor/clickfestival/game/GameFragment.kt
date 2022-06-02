@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.clickfestival.R
 import com.example.clickfestival.databinding.FragmentGameBinding
@@ -15,6 +18,7 @@ import com.example.clickfestival.databinding.FragmentGameBinding
 class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
+    private lateinit var viewModel: GameViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,17 +28,21 @@ class GameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentGameBinding.inflate(inflater, container, false)
-        return binding.root
+        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        binding.gameViewModel = viewModel
+        binding.lifecycleOwner = this
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonCountUp.setOnClickListener {
-            findNavController().navigate(R.id.action_GameFragment_to_TopFragment)
+            if (findNavController().currentDestination?.id == R.id.GameFragment) {
+                findNavController().navigate(R.id.action_GameFragment_to_TopFragment)
+            }
         }
     }
 
