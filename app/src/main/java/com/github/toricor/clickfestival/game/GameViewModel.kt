@@ -9,7 +9,7 @@ private val CLICK_BUZZ_PATTERN = longArrayOf(100, 100)
 private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
 private val NO_BUZZ_PATTERN = longArrayOf(0)
 private val INITIAL_TEXT_SIZE = 72
-private val MAX_TEXT_SIZE = 72
+private val MAX_TEXT_SIZE = 120 * 5
 
 class GameViewModel: ViewModel() {
 
@@ -49,11 +49,11 @@ class GameViewModel: ViewModel() {
             return
         }
 
-        if (24 < clickCount) {
+        if (24 <= clickCount) {
             _textSize.value = calcTextSize(clickCount)
         }
 
-        if (60 < clickCount) {
+        if (60 <= clickCount) {
             _textRotation.value = calcTextRotation(clickCount)
         }
     }
@@ -63,7 +63,7 @@ class GameViewModel: ViewModel() {
     }
 
     private fun calcTextSize(v: Int): Int {
-        return v * 5
+        return min(v * 5, MAX_TEXT_SIZE)
     }
 
     fun onBuzzComplete() {
