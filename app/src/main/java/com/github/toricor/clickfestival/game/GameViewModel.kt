@@ -8,8 +8,12 @@ import kotlin.math.min
 private val CLICK_BUZZ_PATTERN = longArrayOf(100, 100)
 private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
 private val NO_BUZZ_PATTERN = longArrayOf(0)
-private val INITIAL_TEXT_SIZE = 72
-private val MAX_TEXT_SIZE = 120 * 5
+private const val INITIAL_TEXT_SIZE = 72
+private const val MAX_TEXT_SIZE = 120 * 5
+
+private const val FIRST_COUNT_THRESHOLD = 12
+private const val SECOND_COUNT_THRESHOLD = 48
+private const val THIRD_COUNT_THRESHOLD = 120
 
 class GameViewModel: ViewModel() {
 
@@ -31,6 +35,10 @@ class GameViewModel: ViewModel() {
     val textRotation: LiveData<Int>
         get() = _textRotation
 
+    private val _clickButtonRotation = MutableLiveData<Int>()
+    val clickButtonRotation: LiveData<Int>
+        get() = _clickButtonRotation
+
     private val _eventGameFinish = MutableLiveData<Boolean>(false)
 
     private val _eventBuzz = MutableLiveData<BuzzType>(BuzzType.NO_BUZZ)
@@ -45,21 +53,25 @@ class GameViewModel: ViewModel() {
         // some effects that children enjoy
         _eventBuzz.value = BuzzType.CLICK
 
-        if (clickCount < 24) {
+        if (clickCount < FIRST_COUNT_THRESHOLD) {
             return
         }
 
-        if (24 <= clickCount) {
+        if (FIRST_COUNT_THRESHOLD <= clickCount) {
             _textSize.value = calcTextSize(clickCount)
         }
 
-        if (60 <= clickCount) {
+        if (SECOND_COUNT_THRESHOLD <= clickCount) {
             _textRotation.value = calcTextRotation(clickCount)
+        }
+
+        if (THIRD_COUNT_THRESHOLD <= clickCount) {
+            _clickButtonRotation.value = calcTextRotation(clickCount)
         }
     }
 
     private fun calcTextRotation(v: Int): Int {
-        return (v - 60) * 5
+        return (v - SECOND_COUNT_THRESHOLD) * 5
     }
 
     private fun calcTextSize(v: Int): Int {

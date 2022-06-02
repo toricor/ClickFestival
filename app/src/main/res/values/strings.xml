@@ -2,11 +2,11 @@
     <string name="app_name">ClickFestival</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="top_fragment_label">Top Fragment</string>
-    <string name="game_fragment_label">Game Fragment</string>
+    <string name="top_fragment_label">TOP</string>
+    <string name="game_fragment_label">GAME</string>
     <string name="start">Start</string>
     <string name="click">Click!!</string>
 
-    <string name="hello_top_fragment">Hello top fragment</string>
+    <string name="hello_top_fragment">CLICK FESTIVAL</string>
     <string name="hello_game_fragment">Hello game fragment. Arg: %1$s</string>
 </resources>

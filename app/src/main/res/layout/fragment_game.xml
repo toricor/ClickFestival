@@ -36,6 +36,7 @@
             android:layout_height="0dp"
             android:onClick="@{() -> gameViewModel.onButtonClick()}"
             android:text="@string/click"
+            android:rotation="@{gameViewModel.clickButtonRotation}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

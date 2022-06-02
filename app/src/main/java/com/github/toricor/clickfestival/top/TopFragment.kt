@@ -26,18 +26,15 @@ class TopFragment : Fragment() {
     ): View? {
 
         _binding = FragmentTopBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.buttonStart.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.TopFragment) {
                 findNavController().navigate(R.id.action_TopFragment_to_GameFragment)
             }
         }
+
+        return binding.root
+
     }
 
     override fun onDestroyView() {
