@@ -9,4 +9,6 @@
 
     <string name="hello_top_fragment">CLICK FESTIVAL</string>
     <string name="hello_game_fragment">Hello game fragment. Arg: %1$s</string>
+    <string name="play_again">Play Again</string>
+    <string name="back_home">Back Home</string>
 </resources>

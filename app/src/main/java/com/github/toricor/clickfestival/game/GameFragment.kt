@@ -1,17 +1,12 @@
 package com.github.toricor.clickfestival.game
 
-import android.os.Build
-import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.getSystemService
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import com.github.toricor.clickfestival.R
 import com.github.toricor.clickfestival.databinding.FragmentGameBinding
@@ -22,11 +17,12 @@ import com.github.toricor.clickfestival.databinding.FragmentGameBinding
 class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
-    private lateinit var viewModel: GameViewModel
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var viewModel: GameViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +44,15 @@ class GameFragment : Fragment() {
             if (buzzType != GameViewModel.BuzzType.NO_BUZZ) {
                 buzz(buzzType.pattern)
                 viewModel.onBuzzComplete()
+            }
+        })
+
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                viewModel.onGameFinishComplete()
+                if (findNavController().currentDestination?.id == R.id.GameFragment) {
+                    findNavController().navigate(R.id.action_GameFragment_to_ResultFragment)
+                }
             }
         })
 

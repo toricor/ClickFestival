@@ -24,5 +24,20 @@
         <action
             android:id="@+id/action_GameFragment_to_TopFragment"
             app:destination="@id/TopFragment" />
+        <action
+            android:id="@+id/action_GameFragment_to_ResultFragment"
+            app:destination="@id/ResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ResultFragment"
+        android:name="com.github.toricor.clickfestival.top.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_ResultFragment_to_GameFragment"
+            app:destination="@id/GameFragment" />
+        <action
+            android:id="@+id/action_ResultFragment_to_TopFragment"
+            app:destination="@id/TopFragment" />
     </fragment>
 </navigation>
