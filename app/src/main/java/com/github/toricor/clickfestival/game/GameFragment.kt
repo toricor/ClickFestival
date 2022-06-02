@@ -13,8 +13,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.clickfestival.R
-import com.example.clickfestival.databinding.FragmentGameBinding
+import com.github.toricor.clickfestival.R
+import com.github.toricor.clickfestival.databinding.FragmentGameBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

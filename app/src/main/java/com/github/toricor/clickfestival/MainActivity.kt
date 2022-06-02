@@ -8,8 +8,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import com.example.clickfestival.R
-import com.example.clickfestival.databinding.ActivityMainBinding
+import com.github.toricor.clickfestival.R
+import com.github.toricor.clickfestival.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

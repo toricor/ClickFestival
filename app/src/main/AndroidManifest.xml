@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.clickfestival">
+    package="com.github.toricor.clickfestival">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <application

@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.clickfestival.R
-import com.example.clickfestival.databinding.FragmentTopBinding
+import com.github.toricor.clickfestival.R
+import com.github.toricor.clickfestival.databinding.FragmentTopBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.

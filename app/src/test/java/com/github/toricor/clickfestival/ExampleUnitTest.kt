@@ -1,4 +1,4 @@
-package com.example.clickfestival
+package com.github.toricor.clickfestival
 
 import org.junit.Test
 

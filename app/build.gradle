@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.clickfestival"
+        applicationId "com.github.toricor.clickfestival"
         minSdk 24
         targetSdk 32
         versionCode 1
@@ -18,8 +18,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix 'dev'
+            debuggable true
         }
     }
     compileOptions {
