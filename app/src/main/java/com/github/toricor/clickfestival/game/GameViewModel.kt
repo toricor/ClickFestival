@@ -31,11 +31,11 @@ class GameViewModel: ViewModel() {
     val textSize: LiveData<Int>
         get() = _textSize
 
-    private val _textRotation = MutableLiveData<Int>()
+    private val _textRotation = MutableLiveData<Int>(0)
     val textRotation: LiveData<Int>
         get() = _textRotation
 
-    private val _clickButtonRotation = MutableLiveData<Int>()
+    private val _clickButtonRotation = MutableLiveData<Int>(0)
     val clickButtonRotation: LiveData<Int>
         get() = _clickButtonRotation
 
