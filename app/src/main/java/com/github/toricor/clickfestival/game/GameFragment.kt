@@ -67,6 +67,7 @@ class GameFragment : Fragment() {
                 buzzer.vibrate(VibrationEffect.createWaveform(pattern, -1))
             } else {
                 //deprecated in API 26
+                @Suppress("DEPRECATION")
                 buzzer.vibrate(pattern, -1)
             }
         }

@@ -1,4 +1,4 @@
-package com.github.toricor.clickfestival.top
+package com.github.toricor.clickfestival.result
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.github.toricor.clickfestival.R
 import com.github.toricor.clickfestival.databinding.FragmentResultBinding
+import com.github.toricor.clickfestival.top.ResultFragmentArgs
+import com.github.toricor.clickfestival.top.ResultFragmentDirections
 
 /**
  * show result
