@@ -14,32 +14,42 @@
         android:layout_height="match_parent"
         tools:context="com.github.toricor.clickfestival.game.GameFragment">
 
-        <TextView
-            android:id="@+id/textview_show_count"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:onClick="@{() -> gameViewModel.onButtonClick()}"
-            android:text="@{String.valueOf(gameViewModel.clickCount)}"
-            android:textSize="@{gameViewModel.textSize}"
-            android:rotation="@{gameViewModel.textRotation}"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toTopOf="@id/button_count_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="300" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button_count_up"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:onClick="@{() -> gameViewModel.onButtonClick()}"
-            android:text="@string/click"
-            android:rotation="@{gameViewModel.clickButtonRotation}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_show_count" />
+            <TextView
+                android:id="@+id/textview_show_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> gameViewModel.onButtonClick()}"
+                android:rotation="@{gameViewModel.textRotation}"
+                android:text="@{String.valueOf(gameViewModel.clickCount)}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="@{gameViewModel.textSize}"
+                tools:text="333"
+                tools:textSize="72dp" />
+
+            <TextView
+                android:id="@+id/current_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="33dp"
+                android:text="@{gameViewModel.currentTimeString}"
+                tools:text="00:20"/>
+
+            <Button
+                android:id="@+id/button_count_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> gameViewModel.onButtonClick()}"
+                android:rotation="@{gameViewModel.clickButtonRotation}"
+                android:text="@string/click"
+                android:translationY="@{gameViewModel.translationY}"/>
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

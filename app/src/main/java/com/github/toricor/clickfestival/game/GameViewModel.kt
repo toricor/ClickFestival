@@ -1,10 +1,13 @@
 package com.github.toricor.clickfestival.game
 
 import android.os.CountDownTimer
+import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlin.math.min
+import kotlin.math.max
 
 private val CLICK_BUZZ_PATTERN = longArrayOf(100, 100)
 private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
@@ -31,7 +34,7 @@ class GameViewModel: ViewModel() {
         private const val COUNTDOWN_PANIC_SECONDS = 10L
 
         // This is the total time of the game
-        private const val COUNTDOWN_TIME = 6000L
+        private const val COUNTDOWN_TIME = 40000L
 
     }
 
@@ -69,6 +72,14 @@ class GameViewModel: ViewModel() {
     private val _currentTime = MutableLiveData<Long>()
     val currentTime: LiveData<Long>
         get() = _currentTime
+
+    private val _translationY = MutableLiveData<Int>()
+    val translationY: LiveData<Int>
+        get() = _translationY
+
+    val currentTimeString = Transformations.map(currentTime) { time ->
+        DateUtils.formatElapsedTime(time)
+    }
 
     private val timer: CountDownTimer
 
@@ -117,6 +128,7 @@ class GameViewModel: ViewModel() {
 
         if (THIRD_COUNT_THRESHOLD <= clickCount) {
             _clickButtonRotation.value = calcTextRotation(clickCount)
+            _translationY.value = calcTranslationY(clickCount)
         }
     }
 
@@ -126,6 +138,10 @@ class GameViewModel: ViewModel() {
 
     private fun calcTextSize(v: Int): Int {
         return min(v * 5, MAX_TEXT_SIZE)
+    }
+
+    private fun calcTranslationY(v: Int): Int {
+        return max(0, (v - THIRD_COUNT_THRESHOLD) * 3)
     }
 
     fun onGameFinishComplete() {

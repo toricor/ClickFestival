@@ -11,4 +11,5 @@
     <string name="hello_game_fragment">Hello game fragment. Arg: %1$s</string>
     <string name="play_again">Play Again</string>
     <string name="back_home">Back Home</string>
+    <string name="score">Score: %1$d</string>
 </resources>

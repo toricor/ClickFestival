@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.github.toricor.clickfestival.R
 import com.github.toricor.clickfestival.databinding.FragmentResultBinding
 
@@ -19,6 +20,7 @@ class ResultFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    val args: ResultFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,10 @@ class ResultFragment : Fragment() {
     ): View? {
 
         _binding = FragmentResultBinding.inflate(inflater, container, false)
+
+        binding.clickCount.let {
+            it.text = getString(R.string.score, args.clickCount)
+        }
 
         binding.playAgain.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.ResultFragment) {

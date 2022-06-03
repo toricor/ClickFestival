@@ -20,12 +20,11 @@
         android:name="com.github.toricor.clickfestival.game.GameFragment"
         android:label="@string/game_fragment_label"
         tools:layout="@layout/fragment_game">
-
         <action
-            android:id="@+id/action_GameFragment_to_TopFragment"
+            android:id="@+id/backHomeAction"
             app:destination="@id/TopFragment" />
         <action
-            android:id="@+id/action_GameFragment_to_ResultFragment"
+            android:id="@+id/showResultAction"
             app:destination="@id/ResultFragment" />
     </fragment>
     <fragment
@@ -39,5 +38,9 @@
         <action
             android:id="@+id/action_ResultFragment_to_TopFragment"
             app:destination="@id/TopFragment" />
+        <argument
+            android:name="clickCount"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

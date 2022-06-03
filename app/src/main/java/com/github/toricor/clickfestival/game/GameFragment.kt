@@ -33,12 +33,6 @@ class GameFragment : Fragment() {
         binding.gameViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.buttonCountUp.setOnClickListener {
-            if (findNavController().currentDestination?.id == R.id.GameFragment) {
-                findNavController().navigate(R.id.action_GameFragment_to_TopFragment)
-            }
-        }
-
         // Buzzes
         viewModel.eventBuzz.observe(viewLifecycleOwner, Observer { buzzType ->
             if (buzzType != GameViewModel.BuzzType.NO_BUZZ) {
@@ -49,10 +43,11 @@ class GameFragment : Fragment() {
 
         viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer {
             if (it == true) {
-                viewModel.onGameFinishComplete()
                 if (findNavController().currentDestination?.id == R.id.GameFragment) {
-                    findNavController().navigate(R.id.action_GameFragment_to_ResultFragment)
+                    val action = GameFragmentDirections.showResultAction(viewModel.clickCount.value!!)
+                    findNavController().navigate(action)
                 }
+                viewModel.onGameFinishComplete()
             }
         })
 
