@@ -13,7 +13,8 @@
 
         <action
             android:id="@+id/action_TopFragment_to_GameFragment"
-            app:destination="@id/GameFragment" />
+            app:destination="@id/GameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/GameFragment"
@@ -22,10 +23,13 @@
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/backHomeAction"
-            app:destination="@id/TopFragment" />
+            app:destination="@id/TopFragment"
+            app:popUpTo="@id/TopFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/showResultAction"
-            app:destination="@id/ResultFragment" />
+            app:destination="@id/ResultFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/ResultFragment"
@@ -34,10 +38,15 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_ResultFragment_to_GameFragment"
-            app:destination="@id/GameFragment" />
+            app:destination="@id/GameFragment"
+            app:popUpTo="@id/GameFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_ResultFragment_to_TopFragment"
-            app:destination="@id/TopFragment" />
+            app:destination="@id/TopFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@id/TopFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="clickCount"
             app:argType="integer"

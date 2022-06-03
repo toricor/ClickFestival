@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlin.math.min
-import kotlin.math.max
 
 private val CLICK_BUZZ_PATTERN = longArrayOf(100, 100)
 private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
@@ -18,7 +17,7 @@ private const val MAX_TEXT_SIZE = 120 * 5
 
 private const val FIRST_COUNT_THRESHOLD = 12
 private const val SECOND_COUNT_THRESHOLD = 48
-private const val THIRD_COUNT_THRESHOLD = 120
+private const val THIRD_COUNT_THRESHOLD = 50
 
 class GameViewModel: ViewModel() {
 
@@ -34,7 +33,7 @@ class GameViewModel: ViewModel() {
         private const val COUNTDOWN_PANIC_SECONDS = 10L
 
         // This is the total time of the game
-        private const val COUNTDOWN_TIME = 40000L
+        private const val COUNTDOWN_TIME = 20000L
 
     }
 
@@ -72,10 +71,6 @@ class GameViewModel: ViewModel() {
     private val _currentTime = MutableLiveData<Long>()
     val currentTime: LiveData<Long>
         get() = _currentTime
-
-    private val _translationY = MutableLiveData<Int>()
-    val translationY: LiveData<Int>
-        get() = _translationY
 
     val currentTimeString = Transformations.map(currentTime) { time ->
         DateUtils.formatElapsedTime(time)
@@ -128,7 +123,6 @@ class GameViewModel: ViewModel() {
 
         if (THIRD_COUNT_THRESHOLD <= clickCount) {
             _clickButtonRotation.value = calcTextRotation(clickCount)
-            _translationY.value = calcTranslationY(clickCount)
         }
     }
 
@@ -138,10 +132,6 @@ class GameViewModel: ViewModel() {
 
     private fun calcTextSize(v: Int): Int {
         return min(v * 5, MAX_TEXT_SIZE)
-    }
-
-    private fun calcTranslationY(v: Int): Int {
-        return max(0, (v - THIRD_COUNT_THRESHOLD) * 3)
     }
 
     fun onGameFinishComplete() {

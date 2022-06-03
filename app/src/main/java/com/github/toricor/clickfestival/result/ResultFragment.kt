@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.github.toricor.clickfestival.R
@@ -21,6 +22,18 @@ class ResultFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     val args: ResultFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when ResultFragment is at least Started.
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (findNavController().currentDestination?.id == R.id.ResultFragment) {
+                val action = ResultFragmentDirections.actionResultFragmentToTopFragment()
+                findNavController().navigate(action)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +59,6 @@ class ResultFragment : Fragment() {
         }
 
         return binding.root
-
     }
 
     override fun onDestroyView() {

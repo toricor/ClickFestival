@@ -47,8 +47,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> gameViewModel.onButtonClick()}"
                 android:rotation="@{gameViewModel.clickButtonRotation}"
-                android:text="@string/click"
-                android:translationY="@{gameViewModel.translationY}"/>
+                android:text="@string/click" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
