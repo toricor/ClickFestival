@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/ResultFragment"
-        android:name="com.github.toricor.clickfestival.top.ResultFragment"
+        android:name="com.github.toricor.clickfestival.result.ResultFragment"
         android:label="ResultFragment"
         tools:layout="@layout/fragment_result">
         <action
