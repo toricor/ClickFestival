@@ -30,14 +30,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="@{gameViewModel.textSize}"
                 tools:text="333"
-                tools:textSize="72dp" />
+                tools:textSize="72sp" />
 
             <TextView
                 android:id="@+id/current_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textSize="33dp"
+                android:textSize="33sp"
                 android:text="@{gameViewModel.currentTimeString}"
                 tools:text="00:20"/>
 
