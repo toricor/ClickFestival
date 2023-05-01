@@ -4,8 +4,8 @@ import android.os.CountDownTimer
 import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import kotlin.math.min
 
 private val CLICK_BUZZ_PATTERN = longArrayOf(100, 100)
@@ -72,7 +72,7 @@ class GameViewModel: ViewModel() {
     val currentTime: LiveData<Long>
         get() = _currentTime
 
-    val currentTimeString = Transformations.map(currentTime) { time ->
+    val currentTimeString = currentTime.map { time ->
         DateUtils.formatElapsedTime(time)
     }
 
@@ -112,10 +112,7 @@ class GameViewModel: ViewModel() {
         if (clickCount < FIRST_COUNT_THRESHOLD) {
             return
         }
-
-        if (FIRST_COUNT_THRESHOLD <= clickCount) {
-            _textSize.value = calcTextSize(clickCount)
-        }
+        _textSize.value = calcTextSize(clickCount)
 
         if (SECOND_COUNT_THRESHOLD <= clickCount) {
             _textRotation.value = calcTextRotation(clickCount)
