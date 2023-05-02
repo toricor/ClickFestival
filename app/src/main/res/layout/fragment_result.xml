@@ -5,36 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/click_count"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:text="@string/score"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Score: 120" />
 
-        <TextView
-            android:id="@+id/click_count"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="@string/score"
-            android:textAlignment="center"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            tools:text="Score: 120"/>
-
-        <Button
-            android:id="@+id/play_again"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="@string/play_again"
-            android:textSize="24sp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/click_count">
 
         <Button
             android:id="@+id/back_home"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/back_home_content_description"
             android:text="@string/back_home"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:icon="@drawable/baseline_home_24" />
+
+        <Button
+            android:id="@+id/play_again"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/play_again_content_description"
+            android:text="@string/play_again"
+            android:textSize="24sp"
+            app:icon="@drawable/baseline_replay_24" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

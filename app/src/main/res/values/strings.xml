@@ -12,4 +12,7 @@
     <string name="play_again">Play Again</string>
     <string name="back_home">Back Home</string>
     <string name="score">Score: %1$d</string>
+    <string name="back_home_content_description">back home</string>
+    <string name="play_again_content_description">play again</string>
+    <string name="click_here_content_description">click here</string>
 </resources>
